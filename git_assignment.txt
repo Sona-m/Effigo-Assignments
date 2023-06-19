@@ -1,0 +1,201 @@
+/*****************************************************************GIT Assignment****************************************************************************/
+
+
+
+>>>git config --global --edit   // setting the account , editing the configuration , it will open the global git configuaretion for us
+[user]                       //store user info
+  email = <<yourEmail>>
+  name = <<yourName>>
+
+to open the system configuration
+>>>git config --system --edit
+
+to open local configuration
+>>>git config --local --edit
+contains info about particular repository
+url repo , branch etc
+
+to clone a repository , simply open git bash , go to that folder in which you want to clone it
+run the below command , cloning of repository
+>>>git clone <<<http repo link>>
+it will create a local repo on your system
+
+
+creating local repo and connecting to remote repo
+
+1) go to the folder in which you want to create a local repo , create a folder
+2) open git bash , nevigate to that folder
+3) git init - this command will convert your folder into git repository by adding .git folder in it.
+4) git remote add origin <<repository url>> it will connect your local repo to remote repo
+optional - you can verify it by checking your local configuration,  git config --local --edit
+5) to download all the info from your remote to local repo , you can run below command
+ git pull origin master
+
+
+
+
+untracked file - the file you are created in your local repo , but not commited yet.
+you can see all of your untracked file using git status command. this will show you untracked file in red colour.
+>>> git status
+
+modified file - when you are making a changes in a file after the file is commited , then it will come in the stage of modified file.
+suppose your readme file is commited, and then you are making some changes in it , then you will see it came under modified file when you un the
+command git status.
+
+
+>>> git diff <fileName> - for checking the different in your file after you commit some changes.
+
+>>> git add <fileName>  -- add the  particular file to staging area
+>>> git add . --- add all the files present in your local repo to staging area
+
+>>> git restore --staged <filename> - to unstage a file
+
+>>> git diff -staged , to check the difference in staged file
+
+>>> git commit -m "message about the changes"     , it will save the version to version history , give the overview of changes made in this version
+
+>>> git log , for viewing the version history, this commands will display list of commits for particular repo.
+>>> git log --stat , gives you overview of the changes.
+>>> git log --patch , gives you details of changes
+>>> git log --graph , give in graphical format
+>>> git log --pretty , gives you in pretty format
+>>> git log --pretty --format = "" , if you want the ouput in particular format, you can use this
+
+if you want to see commit details after a particular date , you can use this
+>>> git log --after=18/06/2023
+
+it also supports relative data
+>>> git log --since=1day
+
+>>> git commit --amend , this command is used when you already commited the folder but you did some mistake, or you forgot to add a file
+
+>>> git branch
+list out all the branches in local repo
+
+>>> git branch -a/--all
+list out all the branches present in local nd remote repository
+
+>>> git branch <newBranchName> 
+to create a new branch
+
+>>> git switch <branchName>
+to switch to a different branch
+
+>>> git checkout <branchName>
+to switch to different branch , it can also be used.
+
+>>>git checkout -b <newBranchName>
+it will create a new brach and switch to it
+
+>>> git restore <fileName>
+restore the file to last commited version
+
+>>> git checkout <filename>
+this will discard all changes done fom the last commit.
+
+>>> git touch .gitignore
+it will open gitignore file , you can add the files in it that you want to ignore
+
+>>> git push origin <branchName>
+pushes local branch changes to remote branch
+creates a branch on git repo if not present already
+
+>>> git fetch
+it will lookup the changes in remote repo , and make a entry in local repo
+
+>>> git pull
+it will pull all the changes from remote repo to local repo
+
+>>> git merge <branchName>
+it will merge all the changes from mentioned branch.
+
+>>> git pull origin <branchName>
+it will also merge all the changes from the specified branch
+
+Tags - are a way to specify checkpoint in a repository
+Lightweight tag - does not have the details who added the tag nd when was the tag added
+annotated tag- provides a proper tagging mechanism . it will provide you author name ,date and tag message
+
+>>> git tag -l / git tag
+list all the tages present in current directory
+
+>>>git tag <tagName>
+it will create a lightweight tag with specified name
+
+>>> git show <tagName>
+it will give you details of specified tag
+
+>>> git tag -a <tagName>
+it will create annotated tag with specified tagname
+while creating the tag it will ask you for the tag message.
+
+>>> git push origin --tags
+it will push the tags from your local repo to Remote repo.
+
+>>> git config --global alias.st status
+it will add alias as st for status globally, now you can use git st instead of git status in all your git repo.
+
+squashing - git provides you functionality to merge multiple commits in a single commit
+
+>>> git reset <commitNo> - mention the commit no where you want to point your head
+it will move your head to specified commit
+
+
+soft reset - it will move the head to specified commit , and the changes that are made after that specified commit
+will be staged
+
+Hard reset - it will move the head to specified commit , but it waill discard all the changes from that specified commit
+it is advicable to use hard reset ,where we are sure to discard all the changes from the specified commit
+
+>>> git reset --soft <commitNo>
+this command is used for soft reset
+
+>>> git reset --hard <commitNo>
+this command is used for hard reset
+
+>>> git submodule add <submodule repo url>
+it will add the your new repo as submodule to current repo.
+
+stale branches are the branches which haven't updated from last 90 days
+
+
+
+Command	                                                         Description
+git init	                           Initializes a new Git repository in the current directory.
+git clone <repository>	                   Creates a local copy of a remote repository.
+git add <file>	                           Adds a file or changes in a file to the staging area.
+git commit -m <message>	                   Commits the changes in the staging area with a descriptive message.
+git status	                           Shows the status of the working directory and staging area.
+git diff	                           Displays the differences between the working directory and the staging area.
+git diff --cached	                   Shows the differences between the staging area and the last commit.
+git branch	                           Lists all branches in the repository.
+git branch <branch>	                   Creates a new branch.
+git branch -d <branch>	                   Deletes a branch.
+git checkout <branch>	                   Switches to the specified branch.
+git merge <branch>	                   Merges changes from the specified branch into the current branch.
+git pull	                           Fetches changes from a remote repository and merges them into the current branch.
+git push	                           Pushes local changes to a remote repository.
+git remote -v	                           Shows the remote repositories associated with the local repository.
+git remote add <name> <url>	           Adds a remote repository with a specified name and URL.
+git log	                                   Displays the commit history of the current branch.
+git show <commit>	                   Shows the details of a specific commit.
+git stash	                           Saves changes that are not ready to be committed yet.
+git stash list	                           Lists all the stashed changes.
+git stash apply	                           Restores the most recent stashed changes.
+git stash drop	                           Deletes the most recent stashed changes.
+git reset <commit>	                   Undoes commits, moving the branch pointer to a previous commit.
+git revert <commit>	                   Creates a new commit that undoes the changes made in a previous commit.
+git rm <file>	                           Removes a file from the repository and the working directory.
+git mv <old> <new>	                   Renames a file or moves it to a different directory.
+git fetch	                           Downloads the latest changes from a remote repository without merging them into the current branch.
+git remote remove <name>	           Removes a remote repository from the list of remotes.
+git tag	                                   Lists all tags in the repository.
+git tag <name>	                           Creates a new tag at the current commit.
+git tag -a <name> -m <msg>	           Creates an annotated tag with a specified message.
+git tag -d <name>	                   Deletes a tag.
+git show-branch	                           Shows the branches and their commits in a text-based visualization.
+
+
+
+
+
