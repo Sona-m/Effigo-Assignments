@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import Child from './Child';
+import React, { useRef } from 'react';
+import { Provider } from './context';
+import Children from './Children';
 
 function App() {
+  const childRef = useRef(null);    // create a ref to store the child component
+
+  const handleClick = () => {
+    childRef.current.childMethod();
+  };
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={handleClick}>Call Child Method using ref</button>
+      <Child ref={childRef} />
+      <Provider >
+       <Children />
+      </Provider>
     </div>
   );
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
